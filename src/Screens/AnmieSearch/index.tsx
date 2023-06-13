@@ -5,13 +5,15 @@ import {propOr} from 'ramda';
 import {TAnime} from '../../Types';
 
 import {AnimeCard, Spacer} from '../../Components';
+import {AppTheme} from '../../Assets/Theme';
+import {Log} from '../../Utils';
 
 const AnimeSearch = () => {
   const {data} = useGetAnimes();
   const pages: TAnime[] = propOr([], 'pages', data);
 
   const renderItem = ({item}: {item: TAnime}) => {
-    return <AnimeCard anime={item} />;
+    return <AnimeCard anime={item} onPress={() => Log(item)} />;
   };
 
   return (
@@ -33,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
+    backgroundColor: AppTheme.colors.backgroundColor,
   },
   animeList: {
     paddingHorizontal: 16,

@@ -1,17 +1,24 @@
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {TAnime} from '../../Types';
 import AppText from '../Common/AppText';
 import Spacer from '../Common/Spacer';
+import {AppTheme} from '../../Assets/Theme';
 
 interface IAnimeCardProps {
   anime: TAnime;
+  onPress: () => void;
 }
 
-const AnimeCard = ({anime}: IAnimeCardProps) => {
+const AnimeCard = ({anime, onPress}: IAnimeCardProps) => {
   const {title, image, rating} = anime;
+  const disabled = !onPress;
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      activeOpacity={0.6}
+      onPress={onPress}
+      disabled={disabled}>
       <View style={styles.content}>
         <Image
           style={styles.image}
@@ -29,7 +36,7 @@ const AnimeCard = ({anime}: IAnimeCardProps) => {
           </AppText>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -40,8 +47,13 @@ const styles = StyleSheet.create({
     height: 100,
     paddingTop: 10,
     paddingHorizontal: 8,
-    borderWidth: 0.5,
+    borderWidth: 0.3,
     borderRadius: 11,
+    shadowColor: AppTheme.colors.backdrop,
+    backgroundColor: AppTheme.colors.white,
+    // shadowOpacity: 0.3,
+    // shadowRadius: 5,
+    // shadowOffset: {width: 0, height: 5},
   },
   textContent: {width: '70%', marginLeft: 10},
   content: {
