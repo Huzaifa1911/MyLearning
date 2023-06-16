@@ -14,8 +14,9 @@ const ActionButton = ({onPress, title}: IActionButtonProps) => {
     <TouchableOpacity
       style={styles.container}
       activeOpacity={0.6}
+      testID="ActionButton"
       onPress={onPress}>
-      <AppText size={14} fontWeight="600">
+      <AppText size={14} fontWeight="600" testID={`title-${title}`}>
         {title}
       </AppText>
     </TouchableOpacity>
