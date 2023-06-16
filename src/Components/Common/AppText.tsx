@@ -13,7 +13,7 @@ import {Else, If, Then} from 'react-if';
 import {AppTheme} from '../../Assets/Theme';
 import Spacer from './Spacer';
 
-export interface IAppTextProps {
+export interface IAppTextProps extends TextProps {
   onPress?: () => void;
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
@@ -23,8 +23,6 @@ export interface IAppTextProps {
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none';
   color?: string;
   size?: number;
-  textProps?: TextProps;
-  numberOfLines?: number;
   fontWeight?:
     | '100'
     | '200'
@@ -49,9 +47,9 @@ const AppText = (props: PropsWithChildren<IAppTextProps>) => {
     size = 16,
     textAlign = 'left',
     textDecorationLine = 'none',
-    textProps,
     textTransform = 'none',
     fontWeight = '400',
+    ...textProps
   } = props;
   const disabled = !onPress;
 

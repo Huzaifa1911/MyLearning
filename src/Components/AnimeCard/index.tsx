@@ -18,6 +18,7 @@ const AnimeCard = ({anime, onPress}: IAnimeCardProps) => {
       style={styles.card}
       activeOpacity={0.6}
       onPress={onPress}
+      testID="animeCard"
       disabled={disabled}>
       <View style={styles.content}>
         <Image
